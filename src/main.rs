@@ -13,12 +13,14 @@ fn main() {
     // Lag hemmelig tall
     let hemmelighet = rand::thread_rng().gen_range(1, 10);
 
-    let mut gjettet_str = String::new();
+
+    // Teller
+    let mut antall = 0;
     
     while fortsett {
 
 	// Les inn tall
-	gjettet_str = String::new();
+	let mut gjettet_str = String::new();
 	io::stdin()
 	    .read_line(&mut gjettet_str)
 	    .expect("Feilet aa lese linja!");
@@ -31,9 +33,11 @@ fn main() {
 	}
 	else{
 	    println!("Sorry, du gjettet feil.\nPrøv igjen!");
+	    antall += 1;
 	}
 
     }
 
     println!("Hemmelig tall var: {}", hemmelighet);
+    println!("Du brukte {} forsøk på å gjette!", antall);
 }
